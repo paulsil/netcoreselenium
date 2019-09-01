@@ -10,4 +10,19 @@ namespace SeleniumMvc.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
     }
+
+    public class CounterHub : Hub
+    {
+        private int _counter;
+
+        public CounterHub()
+        {
+            _counter = 0;
+        }
+
+        public async Task IncrementCounter()
+        {
+            await Clients.All.SendAsync("IncrementCounter", _counter);
+        }
+    }
 }

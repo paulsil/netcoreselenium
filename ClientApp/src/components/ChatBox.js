@@ -5,12 +5,30 @@ import { actionCreators } from '../store/Chat';
 
 class ChatBox extends Component {
 
+    constructor(props) {
+        // Required step: always call the parent class' constructor
+        super(props);
+
+        // Set the state directly. Use props if necessary.
+        this.state = {
+            user: "",
+            message: ""
+        };
+    }
+
     setUser = (e) => {
         this.setState({ user: e.target.value });
     }
    
     setMessage = (e) => {
         this.setState({ message: e.target.value });
+    }
+
+    shouldComponentUpdate(nextProps) {
+
+        return this.props.user !== nextProps.user ||
+            this.props.message !== nextProps.message;
+            
     }
 
     render () {
