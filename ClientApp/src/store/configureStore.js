@@ -4,13 +4,15 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as Counter from './Counter';
 import * as WeatherForecasts from './WeatherForecasts';
 import * as Chat from './Chat';
+import * as BrowserTest from './BrowserTest';
 import { loggingMiddleware, webSocketsMiddleware } from '../middleware/WebSocketsMiddleware';
 
 export default function configureStore(history, initialState) {
   const reducers = {
     counter: Counter.reducer,
       weatherForecasts: WeatherForecasts.reducer,
-      chat: Chat.reducer
+      chat: Chat.reducer,
+      browserTest: BrowserTest.reducer
   };
 
   const middleware = [

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 import ChatBox from './components/ChatBox';
+import BrowserTest from './components/BrowserTest';
 
 export default () => (
   <Layout>
@@ -12,5 +13,6 @@ export default () => (
     <Route path='/counter' component={Counter} />
     <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
     <Route exact path='/chat' component={ChatBox} />
+    <Route exact path='/tests' component={BrowserTest} />
   </Layout>
 );

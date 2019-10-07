@@ -12,17 +12,21 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="$(AspNetCoreAppRuntimeFrameworkVersion)">
       <IsImplicitlyDefined>true</IsImplicitlyDefined>
-      <PrivateAssets>All</PrivateAssets>
+      <PrivateAssets>all</PrivateAssets>
       <Publish>true</Publish>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.1.1" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="76.0.3809.12600" />
+    <PackageReference Include="Lamar" Version="3.2.0" />
+    <PackageReference Include="Lamar.Microsoft.DependencyInjection" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
+    <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -30,6 +34,7 @@
     <Folder Include="Hubs\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="ClientApp\src\middleware\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Services\BrowserTestTask.cs" />
