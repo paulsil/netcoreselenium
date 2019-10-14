@@ -48,6 +48,8 @@ namespace SeleniumMvc
                 s.TheCallingAssembly();
                 s.WithDefaultConventions();
             });
+
+          
         }
         
 
@@ -84,6 +86,8 @@ namespace SeleniumMvc
                 app.UseHsts();
             }
 
+            ExceptionMiddlewareExtensions.ConfigureExceptionHandler(app);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -109,6 +113,8 @@ namespace SeleniumMvc
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            //app.UseExceptionHandler("/Error");
 
             
         }
