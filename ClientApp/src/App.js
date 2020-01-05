@@ -1,18 +1,16 @@
 ﻿import React from 'react';
 import { Route } from 'react-router';
-import Layout from './components/Layout';
-import Home from './components/Home';
-import Counter from './components/Counter';
-import FetchData from './components/FetchData';
-import ChatBox from './components/ChatBox';
-import BrowserTest from './components/BrowserTest';
+import Layout from './Layout';
+import Home from './home/components/Home';
+import ChatContainer from './chat/components/ChatContainer';
+import HistoryContainer from './history/components/HistoryContainer';
+import UserContainer from './user/components/UserContainer';
 
 export default () => (
   <Layout>
     <Route exact path='/' component={Home} />
-    <Route path='/counter' component={Counter} />
-    <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
-    <Route exact path='/chat' component={ChatBox} />
-    <Route exact path='/tests' component={BrowserTest} />
+        <Route path='/chat' component={ChatContainer} />
+        <Route path='/join' component={UserContainer} />
+    <Route path='/history/:page?' component={HistoryContainer} />
   </Layout>
 );

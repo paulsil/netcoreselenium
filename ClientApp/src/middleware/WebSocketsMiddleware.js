@@ -1,4 +1,4 @@
-﻿import { actionTypes, actionCreators } from '../store/Chat';
+﻿import { actionTypes, actionCreators } from '../chat/ChatActions';
 import * as signalR from '@aspnet/signalr';
 
 

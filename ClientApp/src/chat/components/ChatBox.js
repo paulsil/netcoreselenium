@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actionCreators } from '../store/Chat';
+import { actionCreators } from '../../store/Chat';
 
 class ChatBox extends Component {
 
