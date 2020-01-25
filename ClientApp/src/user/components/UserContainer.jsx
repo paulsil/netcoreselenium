@@ -13,7 +13,7 @@ const UserContainer = props => (
         <Row>
             <Col>
                 <h1>Boo</h1>
-                <JoinForm />
+                <JoinForm user={props.user}/>
             </Col>
         </Row>
         <Row>
