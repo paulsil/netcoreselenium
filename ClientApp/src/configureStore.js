@@ -2,13 +2,15 @@
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as History from './history/HistoryReducer';
+import * as Navigation from './nav/NavReducer';
 import * as Chat from './chat/ChatReducer';
 import { loggingMiddleware, webSocketsMiddleware } from './middleware/WebSocketsMiddleware';
 
 export default function configureStore(history, initialState) {
   const reducers = {
       chat: Chat.reducer,
-      history: History.reducer
+      history: History.reducer,
+      navigation: Navigation.reducer
   };
 
   const middleware = [

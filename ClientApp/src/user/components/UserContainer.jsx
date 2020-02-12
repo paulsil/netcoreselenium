@@ -7,30 +7,34 @@ import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { actionCreators } from '../UserActions';
 import { JoinForm } from './JoinForm';
+import { withRouter, BrowserRouter as Router } from 'react-router-dom';
 
 const UserContainer = props => (
     <Container>
         <Row>
             <Col>
-                <h1>Boo</h1>
-                <JoinForm user={props.user}/>
+                    <JoinForm user={props.user} />
             </Col>
         </Row>
-        <Row>
-            <Col sm={4}><h2>{props.user}</h2></Col>
-            <Col sm={8}>
+        {
+            /*
+            <Row>
+                <Col sm={4}><h2>{props.user}</h2></Col>
+                <Col sm={8}
 
-                <Card bg="light" style={{ width: '18rem', marginRight: '100px' }}>
-                    <Card.Header>{props.user}</Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk
-                        of the card's content.{props.message}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-        </Row>
+                    <Card bg="light" style={{ width: '18rem', marginRight: '100px' }}>
+                        <Card.Header>{props.user}</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk
+                            of the card's content.{props.message}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+             </Row >
+            */
+        }
 
     </Container>
 );

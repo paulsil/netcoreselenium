@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useHistory, useLocation } from "react-router-dom";
 
 export function JoinForm(state) {
 
@@ -8,6 +9,9 @@ export function JoinForm(state) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [validated, setValidated] = useState(false);
+
+    let history = useHistory();
+    let location = useLocation();
 
     const handleSubmit = event => {
         const form = event.currentTarget;
@@ -17,9 +21,11 @@ export function JoinForm(state) {
         }
 
         setValidated(true);
+        history.push("/");
     };
         
     return (
+
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
