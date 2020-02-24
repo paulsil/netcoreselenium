@@ -1,17 +1,32 @@
 ﻿import { actionTypes } from './UserActions'
 
-const initialState = { users: [] };
+const initialState = {
+        user: {
+            loggingIn: false,
+            loggedIn: false,
+            loggingOut: false,
+            name: ''
+
+        }
+    };
 
 export const reducer = (state, action) => {
     state = state || initialState;
 
-    if (action.type === actionTypes.join) {
-
-        return { ...state };
+    if (action.type === actionTypes.USER_LOGGING_IN) {
+        return { ...state, loggingIn: true, name: action.name  };
     }
 
-    if (action.type === actionTypes.receiveMessage) {
-        return { ...state, user: action.user, message: action.message };
+    if (action.type === actionTypes.USER_LOGGED_IN) {
+        return { ...state, loggingIn: false, loggedIn: true };
+    }
+
+    if (action.type === actionTypes.USER_LOGGING_OUT) {
+        return { ...state, loggingOut: true };
+    }
+
+    if (action.type === actionTypes.USER_LOGGED_OUT) {
+        return initialState;
     }
 
     return state;

@@ -1,61 +1,64 @@
 ﻿export const actionTypes = {
-    join: 'USER_JOIN',
-    userJoining: 'USER_JOINING',
-    joinFailed: 'USER_JOIN_FAILED',
-    leave: 'LEAVE',
-    userLeaving: 'USER_LEAVING',
-    userLeft: 'USER_LEFT',
-    userExists: 'USER_EXISTS',
-    joined: 'USER_JOINED'
+    USER_LOGGING_IN: 'USER_LOGGING_IN',
+    USER_LOGGED_IN: 'USER_LOGGED_IN',
+    USER_LOGGING_OUT: 'USER_LOGGING_OUT',
+    USER_LOGGED_OUT: 'USER_LOGGED_OUT',
+    USER_LOGIN_FAILED: 'USER_LOGIN_FAILED',
+    USER_NAME_ALREADY_IN_USE: 'USER_NAME_ALREADY_IN_USE'
 };
 
-const urls = {
+const api = {
     join: (name) => `api/join?name=${name}`,
     leave: (name) => `api/leave?name=${name}`
 }
 
 export const actionCreators = {
-    join: (name) => async (dispatch, getState) => {
+    logIn: (name) => async (dispatch, getState) => {
 
         //stop if they are already trying to join
-        if (getState().users.joining) {
+        if (getState().user.loggingIn) {
             return
         }
 
         //has the user name already been taken
-        if (getState().users.includes(name)) {
+        if (getState().chat.members.includes(name)) {
             dispatch({
-                type: actionTypes.userExists,
+                type: actionTypes.USER_NAME_ALREADY_IN_USE,
                 user: name
             });
             return;
         }
 
         //publish joining attempt
-        dispatch({ type: actionTypes.userJoining, name });
+        dispatch({ type: actionTypes.USER_LOGGING_IN, name: name });
 
-        const url = urls.join(name);
+        const url = api.join(name);
         const response = await fetch(url);
         const joinResponse = await response.json();
 
 
-        if (joinResponse.fail) {
+        if (!joinResponse.success) {
             dispatch({
-                type: actionTypes.joinFailed
+                type: actionTypes.USER_LOGIN_FAILED, error: joinResponse.errors
             });
         }
 
-        dispatch({ type: actionTypes.joined, name });
+        dispatch({ type: actionTypes.USER_LOGGED_IN });
     },
-    leave: (name) => async (dispatch) => {
+    logOut: (name) => async (dispatch) => {
+
+        //stop if they are already trying to join
+        if (getState().user.loggedOut) {
+            return
+        }
 
         //publish leave event to other users
-        dispatch({ type: actionTypes.userLeaving });
+        dispatch({ type: actionTypes.USER_LOGGING_OUT });
 
         const response = await fetch(urls.leave(name));
-        const forecasts = await response.json();
+        const logoutResponse = await response.json();
 
 
-        dispatch({ type: actionTypes.leave, name });
+        dispatch({ type: actionTypes.USER_LOGGED_OUT });
     }
 };

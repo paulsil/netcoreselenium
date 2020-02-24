@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useHistory, useLocation } from "react-router-dom";
 
-export function JoinForm(state) {
+export function JoinForm(props) {
 
     // Declare a new state variable, which we'll call "count"
     const [username, setUsername] = useState('');
@@ -15,14 +15,20 @@ export function JoinForm(state) {
 
     const handleSubmit = event => {
         const form = event.currentTarget;
+
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
 
         setValidated(true);
-        history.push("/");
+        event.preventDefault();
+        //event.stopPropagation();
+        //history.push("/");
+        props.join(username);
     };
+
+    handleSubmit.bind(this);
         
     return (
 

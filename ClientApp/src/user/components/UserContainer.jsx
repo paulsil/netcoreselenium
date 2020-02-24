@@ -2,18 +2,16 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container'
-import Card from 'react-bootstrap/Card'
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { actionCreators } from '../UserActions';
 import { JoinForm } from './JoinForm';
-import { withRouter, BrowserRouter as Router } from 'react-router-dom';
 
 const UserContainer = props => (
     <Container>
         <Row>
             <Col>
-                    <JoinForm user={props.user} />
+                    <JoinForm join={props.join} />
             </Col>
         </Row>
         {
@@ -40,6 +38,11 @@ const UserContainer = props => (
 );
 
 const mapStateToProps = state => state.chat;
-const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
+
+function mapDispatchToProps(dispatch) {
+    return { join: bindActionCreators(actionCreators.join, dispatch) }
+}
+
+//const mapDispatchToProps = dispatch => { join: bindActionCreators(actionCreators.join, dispatch) };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);

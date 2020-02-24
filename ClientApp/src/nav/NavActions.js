@@ -1,3 +1,3 @@
 ﻿export const actionTypes = {
-    changeLocation: "@@router/LOCATION_CHANGE@"
+    changeLocation: "@@router/LOCATION_CHANGE"
 }
