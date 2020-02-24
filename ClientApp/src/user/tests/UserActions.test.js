@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { actionTypes, actionCreators } from '../UserActions'
 import fetchMock from 'fetch-mock'
 import expect from 'expect' // You can use any testing library
+import "regenerator-runtime/runtime";
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
