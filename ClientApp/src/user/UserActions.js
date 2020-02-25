@@ -43,7 +43,7 @@ export const actionCreators = {
             });
         }
 
-        dispatch({ type: actionTypes.USER_LOGGED_IN });
+        dispatch({ type: actionTypes.USER_LOGGED_IN, name: name });
     },
     logOut: (name) => async (dispatch) => {
 

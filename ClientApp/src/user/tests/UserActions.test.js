@@ -5,13 +5,13 @@ import fetchMock from 'fetch-mock'
 import expect from 'expect' // You can use any testing library
 import "regenerator-runtime/runtime";
 
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares)
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('async actions', () => {
 
     afterEach(() => {
-        fetchMock.restore()
+        fetchMock.restore();
     })
 
     it('creates FETCH_TODOS_SUCCESS when fetching todos has been done', () => {
@@ -22,13 +22,18 @@ describe('async actions', () => {
                 loggedIn: false,
                 loggingOut: false,
                 name: ''
+            },
+            chat: {
+                members: []
             }
         })
 
-        fetchMock.getOnce('/join?name=Bob', {
-            body: { success: true, errors: [] },
-            headers: { 'content-type': 'application/json' }
-        })
+        fetchMock.getOnce('/api/join?name=Bob',
+            {
+                body: { success: true, errors: [] },
+                headers: { 'content-type': 'application/json' }
+            });
+
         const expectedActions = [
             { type: actionTypes.USER_LOGGING_IN, name: 'Bob' },
             { type: actionTypes.USER_LOGGED_IN, name: 'Bob' }

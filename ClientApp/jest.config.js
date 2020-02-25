@@ -4,4 +4,7 @@ module.exports = {
     transform: {
         "^.+\\.js?$": "babel-jest"
     },
+    "moduleNameMapper": {
+        "\\.(scss|sass|css)$": "identity-obj-proxy"
+    }
 };
