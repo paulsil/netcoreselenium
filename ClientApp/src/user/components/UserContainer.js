@@ -11,6 +11,7 @@ const UserContainer = props => (
     <Container>
         <Row>
             <Col>
+            <h1>Test page</h1>
                     <JoinForm join={props.join} />
             </Col>
         </Row>
