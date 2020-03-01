@@ -1,15 +1,11 @@
 ﻿import { actionTypes } from './UserActions'
 
 const initialState = {
-    user: {
         loggingIn: false,
         loggedIn: false,
         loggingOut: false,
-        name: ''
-    },
-    chat: {
+        name: '',
         members: []
-    }
     };
 
 export const reducer = (state, action) => {

@@ -11,8 +11,7 @@ const UserContainer = props => (
     <Container>
         <Row>
             <Col>
-            <h1>Test page</h1>
-                    <JoinForm join={props.join} />
+                <JoinForm logIn={props.logIn} />
             </Col>
         </Row>
         {
@@ -41,7 +40,7 @@ const UserContainer = props => (
 const mapStateToProps = state => state.chat;
 
 function mapDispatchToProps(dispatch) {
-    return { join: bindActionCreators(actionCreators.join, dispatch) }
+    return { logIn: bindActionCreators(actionCreators.logIn, dispatch) }
 }
 
 //const mapDispatchToProps = dispatch => { join: bindActionCreators(actionCreators.join, dispatch) };

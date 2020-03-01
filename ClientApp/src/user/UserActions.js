@@ -8,8 +8,8 @@
 };
 
 const api = {
-    join: (name) => `api/join?name=${name}`,
-    leave: (name) => `api/leave?name=${name}`
+    logIn: (name) => `api/logIn?name=${name}`,
+    logOut: (name) => `api/logOut?name=${name}`
 }
 
 export const actionCreators = {
@@ -21,7 +21,7 @@ export const actionCreators = {
         }
 
         //has the user name already been taken
-        if (getState().chat.members.includes(name)) {
+        if (getState().user.members.includes(name)) {
             dispatch({
                 type: actionTypes.USER_NAME_ALREADY_IN_USE,
                 user: name
@@ -32,7 +32,7 @@ export const actionCreators = {
         //publish joining attempt
         dispatch({ type: actionTypes.USER_LOGGING_IN, name: name });
 
-        const url = api.join(name);
+        const url = api.logIn(name);
         const response = await fetch(url);
         const joinResponse = await response.json();
 
@@ -45,7 +45,7 @@ export const actionCreators = {
 
         dispatch({ type: actionTypes.USER_LOGGED_IN, name: name });
     },
-    logOut: (name) => async (dispatch) => {
+    logOut: (name) => async (dispatch, getState) => {
 
         //stop if they are already trying to join
         if (getState().user.loggedOut) {
@@ -55,9 +55,8 @@ export const actionCreators = {
         //publish leave event to other users
         dispatch({ type: actionTypes.USER_LOGGING_OUT });
 
-        const response = await fetch(urls.leave(name));
+        const response = await fetch(api.logOut(name));
         const logoutResponse = await response.json();
-
 
         dispatch({ type: actionTypes.USER_LOGGED_OUT });
     }

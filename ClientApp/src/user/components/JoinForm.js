@@ -25,7 +25,7 @@ export function JoinForm(props) {
         event.preventDefault();
         //event.stopPropagation();
         //history.push("/");
-        props.join(username);
+        props.logIn(username);
     };
 
     handleSubmit.bind(this);

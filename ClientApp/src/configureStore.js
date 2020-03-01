@@ -4,13 +4,15 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as History from './history/HistoryReducer';
 import * as Navigation from './nav/NavReducer';
 import * as Chat from './chat/ChatReducer';
+import * as User from './user/UserReducer';
 import { loggingMiddleware, webSocketsMiddleware } from './middleware/WebSocketsMiddleware';
 
 export default function configureStore(history, initialState) {
   const reducers = {
+      user: User.reducer,
       chat: Chat.reducer,
       history: History.reducer,
-      navigation: Navigation.reducer
+      navigation: Navigation.reducer,
   };
 
   const middleware = [

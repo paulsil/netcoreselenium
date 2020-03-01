@@ -21,9 +21,7 @@ describe('async actions', () => {
                 loggingIn: false,
                 loggedIn: false,
                 loggingOut: false,
-                name: ''
-            },
-            chat: {
+                name: '',
                 members: []
             }
         })

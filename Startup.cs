@@ -39,7 +39,8 @@ namespace SeleniumMvc
                 configuration.RootPath = "ClientApp/build";
             });
 
-            services.AddSingleton(typeof(IBrowserTest), typeof(BrowserTest));
+            services.AddSingleton<IBrowserTest, BrowserTest>();
+            services.AddSingleton<ChatService>();
 
             // Also exposes Lamar specific registrations
             // and functionality
